@@ -55,6 +55,24 @@ all platforms now and light up the rest with no API change. See
 [Web (WebAuthn local gate)](#web-webauthn-local-gate) and
 [Desktop macOS (Touch ID)](#desktop-macos-touch-id) for the per-target caveats.
 
+## Demo
+
+The same Compose Multiplatform `SampleApp` running on three targets. Web registers and verifies a
+WebAuthn platform credential, iOS drives Face ID, and desktop macOS drives Touch ID.
+
+<table>
+  <tr>
+    <td align="center"><b>Web</b> (WebAuthn local gate)</td>
+    <td align="center"><b>iOS</b> (Face ID)</td>
+    <td align="center"><b>Desktop macOS</b> (Touch ID)</td>
+  </tr>
+  <tr>
+    <td valign="top"><img src="docs/media/biometric-web.gif" width="340" alt="biometric-kmp web demo"></td>
+    <td valign="top"><img src="docs/media/biometric-ios.gif" width="190" alt="biometric-kmp iOS demo"></td>
+    <td valign="top"><img src="docs/media/biometric-desktop.gif" width="200" alt="biometric-kmp desktop demo"></td>
+  </tr>
+</table>
+
 ## Installation
 
 ### Compose Multiplatform setup
