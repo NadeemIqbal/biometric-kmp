@@ -43,10 +43,10 @@ the core API.
 
 | Platform | behavior | Native mechanism | Tested |
 |----------|----------|------------------|--------|
-| Android  | Full verify | `androidx.biometric` BiometricPrompt | unit + compile |
-| iOS      | Full verify | `LocalAuthentication` LAContext (Face ID / Touch ID) | compile |
-| Web (wasmJs) | Local gate | WebAuthn platform authenticator (`navigator.credentials`) | compile (browser test pending) |
-| Desktop macOS (JVM) | Touch ID | `LocalAuthentication` LAContext via JNA | compile (needs signed app to run) |
+| Android  | Full verify | `androidx.biometric` BiometricPrompt | unit + emulator run |
+| iOS      | Full verify | `LocalAuthentication` LAContext (Face ID / Touch ID) | compile + simulator run |
+| Web (wasmJs) | Local gate | WebAuthn platform authenticator (`navigator.credentials`) | real browser (Touch ID register + verify) |
+| Desktop macOS (JVM) | Touch ID | `LocalAuthentication` LAContext via JNA | compile + macOS run (native prompt) |
 | Desktop Windows / Linux (JVM) | Reports `Unsupported` | Windows Hello shim lands later; Linux has no standard API | compile |
 
 On the single desktop (JVM) target the backend dispatches on the host OS: macOS drives Touch ID,
