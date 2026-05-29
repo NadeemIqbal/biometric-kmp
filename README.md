@@ -57,19 +57,36 @@ all platforms now and light up the rest with no API change. See
 
 ## Demo
 
-The same Compose Multiplatform `SampleApp` running on three targets. Web registers and verifies a
-WebAuthn platform credential, iOS drives Face ID, and desktop macOS drives Touch ID.
+The same `SampleApp` runs on every target: tap **Unlock** to drive the platform's native
+verification and branch on the typed `AuthResult`.
+
+**Android** (`androidx.biometric` BiometricPrompt): with a fingerprint enrolled, Unlock runs the
+system prompt (with device-credential fallback) and returns `Success`; with nothing enrolled it
+returns a typed `Error: NotEnrolled` instead of throwing.
 
 <table>
   <tr>
-    <td align="center"><b>Web</b> (WebAuthn local gate)</td>
-    <td align="center"><b>iOS</b> (Face ID)</td>
-    <td align="center"><b>Desktop macOS</b> (Touch ID)</td>
+    <td align="center"><b>Android: fingerprint &rarr; Success</b></td>
+    <td align="center"><b>Android: not enrolled &rarr; typed error</b></td>
   </tr>
   <tr>
-    <td valign="top"><img src="docs/media/biometric-web.gif" width="340" alt="biometric-kmp web demo"></td>
-    <td valign="top"><img src="docs/media/biometric-ios.gif" width="190" alt="biometric-kmp iOS demo"></td>
-    <td valign="top"><img src="docs/media/biometric-desktop.gif" width="200" alt="biometric-kmp desktop demo"></td>
+    <td valign="top"><img src="docs/media/biometric-android-fp.gif" width="235" alt="Android fingerprint unlock to Success"></td>
+    <td valign="top"><img src="docs/media/biometric-android-notenrolled.gif" width="235" alt="Android not enrolled typed error"></td>
+  </tr>
+</table>
+
+iOS (Face ID), desktop macOS (Touch ID), and web (WebAuthn local gate):
+
+<table>
+  <tr>
+    <td align="center"><b>Web</b></td>
+    <td align="center"><b>iOS</b></td>
+    <td align="center"><b>Desktop macOS</b></td>
+  </tr>
+  <tr>
+    <td valign="top"><img src="docs/media/biometric-web.gif" width="320" alt="biometric-kmp web demo"></td>
+    <td valign="top"><img src="docs/media/biometric-ios.gif" width="175" alt="biometric-kmp iOS demo"></td>
+    <td valign="top"><img src="docs/media/biometric-desktop.gif" width="185" alt="biometric-kmp desktop demo"></td>
   </tr>
 </table>
 
